@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+RewriteCond %{HTTP:Authorization} ^(.*)
+RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
+
+<ifmodule mod_headers.c>
+   SetEnvIf Origin "^(.*\.domain\.com)$" ORIGIN_SUB_DOMAIN=$1
+   Header set Access-Control-Allow-Origin: "*"
+   Header set Access-Control-Allow-Methods: "GET, POST, PUT, DELETE, OPTIONS"
+   Header set Access-Control-Allow-Headers: "*"
+</ifmodule>
