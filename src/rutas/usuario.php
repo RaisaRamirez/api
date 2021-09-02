@@ -34,7 +34,7 @@ $app->post('/login', function (Request $request, Response $response, array $args
 // url: http://localhost/api/public/usuarios
 $app->get('/usuarios', function (Request $request, Response $response, array $args) { 
     $helper = new helper();   
-    $sql = "SELECT u.nombre as usuario, u.contrasena, t.nombre AS rol
+    $sql = "SELECT u.idUsuario, u.nombre as usuario, u.contrasena, t.nombre AS rol
             FROM usuario u
             INNER JOIN tipousuario t ON u.idTipoUsuario = t.idTipoUsuario";                
     $result = $helper->select($sql); 
