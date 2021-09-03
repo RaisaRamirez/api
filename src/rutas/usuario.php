@@ -7,7 +7,6 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 //     "usuario":"admin",
 //     "contrasena":"$admin$"
 // }
-// Solo queda pendiente evitar que se devuelva un arreglo
 $app->post('/login', function (Request $request, Response $response, array $args) { 
     $data = $request->getParsedBody();
     if(isset($data['usuario']) && isset($data['contrasena'])){
